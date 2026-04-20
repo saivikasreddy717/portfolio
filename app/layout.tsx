@@ -5,8 +5,8 @@ import "./globals.css";
 import { profile } from "@/content/profile";
 
 export const metadata: Metadata = {
-  // TODO: swap this for your final custom domain once you have one
-  metadataBase: new URL("https://saivikas.vercel.app"),
+  // Swap this to your custom domain once you buy one
+  metadataBase: new URL("https://portfolio-93ur.vercel.app"),
   title: {
     default: `${profile.name} — ${profile.role}`,
     template: `%s — ${profile.shortName}`,
