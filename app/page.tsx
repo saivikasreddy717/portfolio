@@ -2,6 +2,7 @@ import Nav from "@/components/ui/Nav";
 import Hero from "@/components/sections/Hero";
 import MetricsWall from "@/components/sections/MetricsWall";
 import WhyHireMe from "@/components/sections/WhyHireMe";
+import ModelCard from "@/components/sections/ModelCard";
 import Experience from "@/components/sections/Experience";
 import Skills from "@/components/sections/Skills";
 import Education from "@/components/sections/Education";
@@ -24,6 +25,7 @@ export default function Home() {
       <Hero />
       <MetricsWall />
       <WhyHireMe />
+      <ModelCard />
       <Experience />
       <Skills />
       <Education />

@@ -258,6 +258,61 @@ export const profile = {
     },
   ],
 
+  // Model card — Hugging Face style profile card
+  modelCard: {
+    modelId: "sai-vikas-reddy/ai-ml-engineer",
+    version: "3.0",
+    description:
+      "A production-grade AI/ML Engineer trained on real-world GenAI systems across healthcare and banking. Specializes in agentic RAG, LoRA fine-tuning, and sub-150ms LLM serving. Ships rigorously evaluated systems, not prototypes.",
+    capabilities: [
+      {
+        title: "Agentic & RAG systems",
+        detail: "LangGraph, MCP, hybrid BM25 + dense, ColBERT rerank, RAGAS",
+      },
+      {
+        title: "Fine-tuning & LLM serving",
+        detail: "LoRA/QLoRA on 7B SLMs · vLLM + Triton · FlashAttention",
+      },
+      {
+        title: "Classical ML & Data Science",
+        detail: "GraphSAGE, XGBoost, LightGBM, two-tower, SHAP, causal inference",
+      },
+      {
+        title: "MLOps & Cloud",
+        detail: "AWS EKS · MLflow · Evidently · CI/CD · drift detection",
+      },
+    ],
+    evaluationResults: [
+      { metric: "Retrieval precision", result: "3x improvement" },
+      { metric: "Extraction accuracy", result: "98% exact-match" },
+      { metric: "Inference throughput", result: "8x gain" },
+      { metric: "p95 LLM latency", result: "< 150ms" },
+      { metric: "Analyst time saved", result: "40%" },
+      { metric: "Chatbot containment", result: "55%" },
+      { metric: "Stockouts reduced", result: "20%" },
+      { metric: "Approval lift (A/B)", result: "7 to 9%" },
+    ],
+    suitedFor: [
+      "Teams shipping production ML, not running experiments",
+      "Roles in RAG, fine-tuning, LLM serving, or MLOps",
+      "Data Science and ML Engineer roles at mature companies",
+      "Healthcare, banking, or regulated industry verticals",
+      "Hybrid or remote roles based in the USA",
+    ],
+    knownConstraints: [
+      "3+ years production depth, not 5+ years breadth",
+      "Domain-trained in healthcare and banking",
+      "Practitioner background, no academic publications",
+    ],
+    technicalSpecs: [
+      { label: "Languages", value: "Python · TypeScript" },
+      { label: "Frameworks", value: "PyTorch · LangChain · LangGraph · HuggingFace" },
+      { label: "Infrastructure", value: "AWS · Azure · Kubernetes · Docker" },
+      { label: "Observability", value: "MLflow · Langfuse · Evidently · Promptfoo" },
+      { label: "Certifications", value: "AWS ML Engineer (MLA-C01) · Azure Data Scientist (DP-100)" },
+    ],
+  },
+
   // Projects you're building — shown on the site as a "Currently building" roadmap.
   // Add real projects to content/projects/*.md and this list as they ship.
   roadmap: [
