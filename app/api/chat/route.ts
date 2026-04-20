@@ -35,5 +35,8 @@ export async function POST(req: Request) {
     ],
   });
 
-  return new StreamingTextResponse(OpenAIStream(response));
+  // Cast needed: openai@4.104 ships `Stream<ChatCompletionChunk>` whose inferred
+  // type doesn't narrow against `ai@3.4`'s `AsyncIterable<AzureChatCompletions>`.
+  // Runtime shape is correct; this is a pure TypeScript declaration mismatch.
+  return new StreamingTextResponse(OpenAIStream(response as never));
 }

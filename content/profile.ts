@@ -9,8 +9,8 @@ export const profile = {
   location: "Raleigh, NC",
   email: "saivikas.y@zohomail.com",
   phone: "+1 919-672-0116",
-  github: "https://github.com/TODO", // TODO: add your GitHub handle
-  linkedin: "https://linkedin.com/in/TODO", // TODO: add your LinkedIn handle
+  github: "https://github.com/saivikasreddy717",
+  linkedin: "https://www.linkedin.com/in/saivikasy/",
   resumePdf: "/resume.pdf",
   availability: "Open to Senior AI/ML Engineer roles · Available May 2025",
 
