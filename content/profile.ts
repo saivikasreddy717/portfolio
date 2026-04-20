@@ -18,6 +18,11 @@ export const profile = {
   oneLiner:
     "AI/ML Engineer shipping agentic RAG, LoRA-tuned SLMs, and sub-150ms LLM serving across healthcare and banking. Currently at Cardinal Health; MS CS @ NC State (May 2025).",
 
+  // Recruiter-facing summary — dense factual profile shown before Experience
+  summary:
+    "AI/ML Engineer with 3+ years shipping production GenAI systems across healthcare (Cardinal Health) and banking (TCS). Specialized in agentic RAG pipelines, LoRA fine-tuning, and sub-150ms LLM serving at scale. Currently completing MS Computer Science at NC State (May 2025).",
+  coreStack: ["LangGraph", "vLLM", "PyTorch", "AWS", "Triton", "MLflow", "LangChain", "Hugging Face"],
+
   // 8 impact numbers pulled from resume — MetricsWall renders these
   headlineMetrics: [
     { value: "3×", label: "retrieval precision" },
