@@ -6,7 +6,7 @@ import { profile } from "@/content/profile";
 
 export const metadata: Metadata = {
   // Swap this to your custom domain once you buy one
-  metadataBase: new URL("https://portfolio-93ur.vercel.app"),
+  metadataBase: new URL("https://portfolio-1gfo.vercel.app"),
   title: {
     default: `${profile.name} — ${profile.role}`,
     template: `%s — ${profile.shortName}`,
