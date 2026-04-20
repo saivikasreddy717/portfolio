@@ -19,7 +19,7 @@ export default function ModelCard() {
             The <span className="gradient-text">technical spec</span> sheet.
           </h2>
           <p className="mt-3 text-sm text-white/50 max-w-2xl">
-            Inspired by Hugging Face model cards. Treating the candidate like a model — training data, capabilities, evaluation results, and known constraints.
+            Inspired by Hugging Face model cards: training data, capabilities, evaluation results, and known constraints.
           </p>
         </div>
 
