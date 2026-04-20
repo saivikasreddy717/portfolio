@@ -12,7 +12,7 @@ export const profile = {
   github: "https://github.com/saivikasreddy717",
   linkedin: "https://www.linkedin.com/in/saivikasy/",
   resumePdf: "/resume.pdf",
-  availability: "Open to Senior AI/ML Engineer roles · Available May 2025",
+  availability: "Open to AI/ML Engineer roles · Available immediately",
 
   tagline: "I build production GenAI systems.",
   oneLiner:

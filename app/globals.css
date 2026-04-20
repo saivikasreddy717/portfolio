@@ -34,9 +34,24 @@
     @apply hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300;
   }
   .gradient-text {
-    @apply bg-gradient-to-r from-[hsl(var(--accent))] via-[hsl(var(--accent-3))] to-[hsl(var(--accent-2))] bg-clip-text text-transparent;
-    background-size: 200% 200%;
+    /* Explicit linear-gradient bypasses Tailwind's from/via/to system, which
+       generates a transparent fallback stop that was making the leading chars
+       vanish against the dark background. */
+    background-image: linear-gradient(
+      90deg,
+      hsl(var(--accent)) 0%,
+      hsl(var(--accent-3)) 50%,
+      hsl(var(--accent-2)) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     animation: gradient 8s ease infinite;
+  }
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
   }
   .chip {
     @apply inline-flex items-center glass rounded-full px-3 py-1 text-xs font-mono;
