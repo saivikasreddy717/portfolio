@@ -16,6 +16,10 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Sticky nav is ~64px; offset anchor jumps so section titles clear it. */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
   body {
     @apply bg-[hsl(var(--bg))] text-[hsl(var(--text))] antialiased;
     font-feature-settings: "ss01", "cv11";
