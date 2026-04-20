@@ -23,8 +23,8 @@ export default function Home() {
 
       <Nav />
       <Hero />
-      <MetricsWall />
       <Summary />
+      <MetricsWall />
       <WhyHireMe />
       <Experience />
       <Skills />
