@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import { Brain, Cpu, LineChart } from "lucide-react";
+import { Brain, Cpu, BarChart2, LineChart } from "lucide-react";
 import { profile } from "@/content/profile";
 
-const ICONS = [Brain, Cpu, LineChart];
+const ICONS = [Brain, Cpu, BarChart2, LineChart];
 
 export default function WhyHireMe() {
   return (
@@ -14,11 +14,11 @@ export default function WhyHireMe() {
             Why hire me
           </div>
           <h2 className="text-3xl md:text-4xl font-semibold max-w-2xl">
-            Three things I do at a <span className="gradient-text">senior level</span>.
+            What I bring at a <span className="gradient-text">senior level</span>.
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {profile.pillars.map((p, i) => {
             const Icon = ICONS[i];
             return (

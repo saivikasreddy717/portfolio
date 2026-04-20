@@ -35,7 +35,7 @@ export const profile = {
     { value: "8–9%", label: "approval lift (A/B)" },
   ],
 
-  // Three pillars for the "Why Hire Me" section
+  // Four pillars for the "Why Hire Me" section
   pillars: [
     {
       title: "Agentic & RAG systems",
@@ -45,7 +45,12 @@ export const profile = {
     {
       title: "Fine-tuning & LLM serving",
       body:
-        "LoRA/QLoRA on 7B SLMs hitting 98% field accuracy; vLLM + Triton with dynamic batching and FlashAttention at 8× throughput.",
+        "LoRA/QLoRA on 7B SLMs hitting 98% field accuracy; vLLM + Triton with dynamic batching and FlashAttention at 8x throughput.",
+    },
+    {
+      title: "Classical ML & Data Science",
+      body:
+        "GraphSAGE fraud detection, two-tower recommenders, LightGBM forecasting, SHAP explanations. Production DS across banking and healthcare.",
     },
     {
       title: "Measurable impact",

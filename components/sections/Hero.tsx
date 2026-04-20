@@ -53,6 +53,16 @@ export default function Hero() {
             GenAI systems.
           </motion.h1>
 
+          {/* DS foundation line */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="mt-4 text-sm md:text-base text-white/50 max-w-lg leading-relaxed"
+          >
+            Backed by classical ML and data science: fraud detection, recommenders, forecasting, and causal inference.
+          </motion.p>
+
           {/* At-a-glance facts */}
           <motion.div
             initial={{ opacity: 0 }}
