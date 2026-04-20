@@ -7,7 +7,7 @@ export default function ModelCard() {
   const card = profile.modelCard;
 
   return (
-    <section className="px-6 md:px-12 py-20">
+    <section id="model-card" className="px-6 md:px-12 py-20">
       <div className="max-w-6xl mx-auto">
 
         {/* Section label */}
@@ -156,25 +156,20 @@ export default function ModelCard() {
           </div>
 
           {/* Footer CTA */}
-          <div className="border-t border-white/5 px-6 md:px-8 py-5 flex flex-wrap items-center justify-between gap-4">
-            <div className="text-sm text-white/50 font-mono">
-              Response guaranteed within 24h.
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={`mailto:${profile.email}`}
-                className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm"
-              >
-                Contact
-              </a>
-              <a
-                href={profile.resumePdf}
-                className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Resume
-              </a>
-            </div>
+          <div className="border-t border-white/5 px-6 md:px-8 py-5 flex flex-wrap items-center justify-end gap-3">
+            <a
+              href={`mailto:${profile.email}`}
+              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm"
+            >
+              Contact
+            </a>
+            <a
+              href={profile.resumePdf}
+              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm"
+            >
+              <Download className="w-3.5 h-3.5" />
+              Resume
+            </a>
           </div>
 
         </motion.div>

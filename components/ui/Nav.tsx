@@ -7,6 +7,7 @@ import { profile } from "@/content/profile";
 const LINKS = [
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
+  { label: "Model Card", href: "#model-card" },
   { label: "Building", href: "#building" },
   { label: "Contact", href: "#contact" },
 ];

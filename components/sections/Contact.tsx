@@ -27,7 +27,7 @@ export default function Contact() {
             Let&apos;s <span className="gradient-text">build something</span>.
           </h2>
           <p className="text-lg text-white/60 max-w-xl mx-auto mb-10">
-            Open to AI/ML Engineer roles. Fastest path is email, I reply within 24h.
+            Open to AI/ML Engineer and Data Science roles. Best way to reach me is email.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">

@@ -300,9 +300,9 @@ export const profile = {
       "Hybrid or remote roles based in the USA",
     ],
     knownConstraints: [
-      "3+ years production depth, not 5+ years breadth",
-      "Domain-trained in healthcare and banking",
-      "Practitioner background, no academic publications",
+      "Depth over breadth: production systems, not resume padding",
+      "Deep domain context in healthcare and banking",
+      "US-based roles only, hybrid or remote",
     ],
     technicalSpecs: [
       { label: "Languages", value: "Python · TypeScript" },
