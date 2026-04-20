@@ -5,6 +5,14 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { profile } from "@/content/profile";
 
+const FACTS = [
+  { label: "Experience", value: "3+ years" },
+  { label: "Current role", value: "ML Engineer" },
+  { label: "Company", value: "Cardinal Health" },
+  { label: "Education", value: "MS CS, NC State" },
+  { label: "Location", value: "Raleigh, NC" },
+];
+
 export default function Hero() {
   const [avatarError, setAvatarError] = useState(false);
   const initials = profile.name
@@ -19,11 +27,12 @@ export default function Hero() {
 
         {/* Left: text content */}
         <div className="flex-1 min-w-0">
-          {/* Status pill */}
+
+          {/* Availability pill */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 chip"
+            className="inline-flex items-center gap-2 chip mb-6"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
@@ -32,30 +41,40 @@ export default function Hero() {
             {profile.availability}
           </motion.div>
 
+          {/* Tagline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
-            className="mt-6 text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05]"
+            className="text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05]"
           >
             I build <span className="gradient-text">production</span>
             <br />
             GenAI systems.
           </motion.h1>
 
-          <motion.p
+          {/* At-a-glance facts */}
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="mt-6 text-lg md:text-xl text-white/60 max-w-xl leading-relaxed"
+            transition={{ delay: 0.25 }}
+            className="mt-6 flex flex-wrap gap-x-6 gap-y-3"
           >
-            {profile.oneLiner}
-          </motion.p>
+            {FACTS.map((f) => (
+              <div key={f.label}>
+                <div className="text-[10px] font-mono uppercase tracking-wider text-white/40">
+                  {f.label}
+                </div>
+                <div className="text-sm font-medium text-white/85 mt-0.5">{f.value}</div>
+              </div>
+            ))}
+          </motion.div>
 
+          {/* CTA buttons */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.4 }}
             className="mt-10 flex flex-wrap gap-3"
           >
             <a
@@ -76,20 +95,6 @@ export default function Hero() {
               or ask my AI assistant →
             </span>
           </motion.div>
-
-          {/* Keyword-rich tech chips */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="mt-10 flex flex-wrap gap-2 max-w-xl"
-          >
-            {["LangGraph", "RAG", "LoRA", "vLLM", "MCP", "AWS", "PyTorch", "MLflow"].map((t) => (
-              <span key={t} className="chip text-white/70">
-                {t}
-              </span>
-            ))}
-          </motion.div>
         </div>
 
         {/* Right: profile photo */}
@@ -99,7 +104,6 @@ export default function Hero() {
           transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="flex-shrink-0 flex flex-col items-center gap-4"
         >
-          {/* Avatar circle */}
           <div
             className="relative w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden
                        ring-2 ring-white/10 ring-offset-4 ring-offset-[hsl(var(--bg))]
@@ -107,11 +111,7 @@ export default function Hero() {
                        to-[hsl(var(--accent-2))] flex items-center justify-center
                        shadow-[0_0_60px_hsl(var(--accent)/0.25)]"
           >
-            {/* Initials fallback */}
-            <span className="text-5xl font-bold text-white/90 select-none">
-              {initials}
-            </span>
-            {/* Photo — Next.js Image handles optimization + sharp downscaling */}
+            <span className="text-5xl font-bold text-white/90 select-none">{initials}</span>
             {!avatarError && (
               <Image
                 src="/avatar.jpg"
@@ -125,10 +125,10 @@ export default function Hero() {
             )}
           </div>
 
-          {/* Name + role beneath photo */}
+          {/* Full name + role */}
           <div className="text-center">
-            <p className="font-semibold text-white">{profile.shortName}</p>
-            <p className="text-sm text-white/50">{profile.role}</p>
+            <p className="font-semibold text-white text-base">{profile.name}</p>
+            <p className="text-sm text-white/50 mt-0.5">{profile.role}</p>
           </div>
         </motion.div>
 

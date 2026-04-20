@@ -1,6 +1,5 @@
 import Nav from "@/components/ui/Nav";
 import Hero from "@/components/sections/Hero";
-import Summary from "@/components/sections/Summary";
 import MetricsWall from "@/components/sections/MetricsWall";
 import WhyHireMe from "@/components/sections/WhyHireMe";
 import Experience from "@/components/sections/Experience";
@@ -23,7 +22,6 @@ export default function Home() {
 
       <Nav />
       <Hero />
-      <Summary />
       <MetricsWall />
       <WhyHireMe />
       <Experience />
