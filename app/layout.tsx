@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   // Swap this to your custom domain once you buy one
   metadataBase: new URL("https://portfolio-1gfo.vercel.app"),
   title: {
-    default: `${profile.name} — ${profile.role}`,
-    template: `%s — ${profile.shortName}`,
+    default: `${profile.name} |${profile.role}`,
+    template: `%s |${profile.shortName}`,
   },
   description: profile.oneLiner,
   keywords: [
@@ -27,21 +27,21 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: profile.name }],
   openGraph: {
-    title: `${profile.name} — ${profile.role}`,
+    title: `${profile.name} |${profile.role}`,
     description: profile.oneLiner,
     siteName: profile.name,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — ${profile.role}`,
+    title: `${profile.name} |${profile.role}`,
     description: profile.oneLiner,
   },
   robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // JSON-LD structured data — helps Google understand you as a Person entity
+  // JSON-LD structured data |helps Google understand you as a Person entity
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",

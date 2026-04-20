@@ -45,7 +45,7 @@ export const profile = {
     {
       title: "Measurable impact",
       body:
-        "RAGAS, Langfuse, Promptfoo, A/B tests, causal inference. I ship rigorously evaluated systems — not demos.",
+        "RAGAS, Langfuse, Promptfoo, A/B tests, causal inference. I ship rigorously evaluated systems, not demos.",
     },
   ],
 
@@ -146,16 +146,16 @@ export const profile = {
         "MLflow",
       ],
       problem:
-        "Analysts spent hours daily manually triaging regulatory recalls, shortage alerts, and clinical document extraction — with no scalable evaluation harness for the LLM systems replacing them.",
+        "Analysts spent hours daily manually triaging regulatory recalls, shortage alerts, and clinical document extraction, with no scalable evaluation harness for the LLM systems replacing them.",
       solution:
         "Built an agentic LangGraph workflow with MCP tools, stateful routing, and human-in-the-loop guardrails for auto-triage. Paired it with a hybrid-retrieval RAG assistant (BM25 + dense + ColBERT rerank) evaluated with RAGAS, and LoRA-fine-tuned 7B SLMs for structured extraction.",
       bullets: [
-        "Agentic compliance workflow on LangGraph with MCP tool integration — auto-triages recall/shortage events for same-day analyst response.",
-        "Hybrid BM25 + dense retrieval with ColBERT reranking and RAGAS eval harness — **3× retrieval precision, 40% less analyst research time**.",
-        "LoRA/QLoRA fine-tuning of 7B SLMs for clinical/regulatory extraction — **98% exact-match** with schema-validated JSON.",
-        "MLOps on AWS EKS (MLflow + Evidently + CodePipeline) — deploy time weeks → days; drift caught pre-prod.",
-        "vLLM + Triton serving with dynamic batching + FlashAttention — **8× throughput, p95 <150ms**.",
-        "Pharma demand forecasting on 2,000+ SKUs with LightGBM + temporal CV + uncertainty — **20% fewer stockouts**.",
+        "Agentic compliance workflow on LangGraph with MCP tool integration: auto-triages recall/shortage events for same-day analyst response.",
+        "Hybrid BM25 + dense retrieval with ColBERT reranking and RAGAS eval harness: **3× retrieval precision, 40% less analyst research time**.",
+        "LoRA/QLoRA fine-tuning of 7B SLMs for clinical/regulatory extraction: **98% exact-match** with schema-validated JSON.",
+        "MLOps on AWS EKS (MLflow + Evidently + CodePipeline): deploy time weeks to days, drift caught pre-prod.",
+        "vLLM + Triton serving with dynamic batching + FlashAttention: **8× throughput, p95 <150ms**.",
+        "Pharma demand forecasting on 2,000+ SKUs with LightGBM + temporal CV + uncertainty: **20% fewer stockouts**.",
       ],
       impact: [
         { metric: "retrieval precision", value: "3×" },
@@ -182,9 +182,9 @@ export const profile = {
       solution:
         "Shipped a customer-facing conversational assistant combining intent classification, hybrid retrieval, and a fine-tuned transformer with confidence-based fallback. Built a fraud system pairing GraphSAGE embeddings on the transaction graph with XGBoost and a TCN for behavioral sequences.",
       bullets: [
-        "Self-service banking assistant on AKS with hybrid BM25+FAISS + fine-tuned transformer, 200K+ interactions — **~55% containment, 40% cost reduction, 12% CSAT lift**.",
-        "Fraud detection with GraphSAGE + XGBoost + TCN — **+4.5% precision @ 95% recall, 20% lower scoring latency** on Azure Event Hubs.",
-        "A/B tests with power analysis and matched-cohort post-launch lift attribution — statistically defensible go/no-go decisions.",
+        "Self-service banking assistant on AKS with hybrid BM25+FAISS + fine-tuned transformer, 200K+ interactions: **~55% containment, 40% cost reduction, 12% CSAT lift**.",
+        "Fraud detection with GraphSAGE + XGBoost + TCN: **+4.5% precision @ 95% recall, 20% lower scoring latency** on Azure Event Hubs.",
+        "A/B tests with power analysis and matched-cohort post-launch lift attribution: statistically defensible go/no-go decisions.",
       ],
       impact: [
         { metric: "containment", value: "55%" },
@@ -212,8 +212,8 @@ export const profile = {
       solution:
         "Two-stage recommender (two-tower neural retrieval + DeepFM reranker) served via GraphQL for real-time approval decisions. Paired with LightGBM/CatBoost churn and default models with SHAP explanations surfaced in Power BI.",
       bullets: [
-        "Two-stage recommender with two-tower retrieval + DeepFM reranker — **7–9% lift in approved applications**, A/B validated.",
-        "Churn + loan-default models (LightGBM, CatBoost) with SHAP in Power BI — **4–6% churn reduction, 3–4% fewer high-risk approvals**.",
+        "Two-stage recommender with two-tower retrieval + DeepFM reranker: **7–9% lift in approved applications**, A/B validated.",
+        "Churn + loan-default models (LightGBM, CatBoost) with SHAP in Power BI: **4–6% churn reduction, 3–4% fewer high-risk approvals**.",
       ],
       impact: [
         { metric: "approval lift", value: "7–9%" },
@@ -225,7 +225,7 @@ export const profile = {
   education: [
     {
       school: "North Carolina State University",
-      degree: "M.S. Computer Science — Data Science specialization",
+      degree: "M.S. Computer Science, Data Science specialization",
       period: "Aug 2023 – May 2025",
     },
     {
