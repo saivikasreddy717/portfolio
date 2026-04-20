@@ -22,7 +22,7 @@ export default function Hero() {
     .join("");
 
   return (
-    <section className="relative min-h-[92vh] flex items-center px-6 md:px-12 pt-20">
+    <section className="relative min-h-[70vh] flex items-center px-6 md:px-12 pt-12 pb-12">
       <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-12 md:gap-16">
 
         {/* Left: text content */}

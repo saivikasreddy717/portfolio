@@ -30,7 +30,7 @@ export default function MetricsWall() {
               transition={{ delay: i * 0.06 }}
               className="glass glass-hover rounded-2xl p-6"
             >
-              <div className="text-4xl md:text-5xl font-semibold gradient-text">{m.value}</div>
+              <div className="text-3xl md:text-5xl font-semibold gradient-text break-words">{m.value}</div>
               <div className="mt-2 text-xs uppercase tracking-wider text-white/50">{m.label}</div>
             </motion.div>
           ))}
