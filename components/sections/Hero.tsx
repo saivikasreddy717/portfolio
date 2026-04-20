@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Download } from "lucide-react";
 import { profile } from "@/content/profile";
@@ -110,14 +111,16 @@ export default function Hero() {
             <span className="text-5xl font-bold text-white/90 select-none">
               {initials}
             </span>
-            {/* Photo — covers initials when it loads; falls back gracefully on error */}
+            {/* Photo — Next.js Image handles optimization + sharp downscaling */}
             {!avatarError && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src="/avatar.jpg"
                 alt={profile.name}
+                fill
+                sizes="(max-width: 768px) 208px, 256px"
+                className="object-cover"
                 onError={() => setAvatarError(true)}
-                className="absolute inset-0 w-full h-full object-cover"
+                priority
               />
             )}
           </div>
