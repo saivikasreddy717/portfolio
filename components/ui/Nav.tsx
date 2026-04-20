@@ -26,7 +26,7 @@ export default function Nav() {
           {/* Left: name */}
           <a href="#top" className="group">
             <span className="font-semibold text-sm group-hover:text-white/80 transition">
-              {profile.shortName}
+              {profile.name}
             </span>
           </a>
 
