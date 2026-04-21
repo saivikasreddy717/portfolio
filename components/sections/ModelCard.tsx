@@ -171,7 +171,7 @@ export default function ModelCard() {
               Resume
             </a>
             <button
-              onClick={() => window.print()}
+              onClick={() => window.open('/model-card', '_blank')}
               className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm print:hidden"
             >
               <FileDown className="w-3.5 h-3.5" />
