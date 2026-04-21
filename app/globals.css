@@ -62,6 +62,33 @@
   }
 }
 
+@media print {
+  /* Hide everything, then reveal only the model card */
+  * {
+    visibility: hidden !important;
+  }
+  #model-card,
+  #model-card * {
+    visibility: visible !important;
+  }
+  #model-card {
+    position: absolute !important;
+    inset: 0 !important;
+    padding: 2rem !important;
+  }
+  /* Remove backdrop blur — doesn't render in print */
+  #model-card .glass {
+    backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+  /* Keep dark background for the page */
+  @page {
+    margin: 0.5cm;
+    size: A4;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

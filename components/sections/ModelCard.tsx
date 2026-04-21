@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { CheckCircle2, AlertCircle, Download } from "lucide-react";
+import { CheckCircle2, AlertCircle, Download, FileDown } from "lucide-react";
 import { profile } from "@/content/profile";
 
 export default function ModelCard() {
@@ -159,17 +159,24 @@ export default function ModelCard() {
           <div className="border-t border-white/5 px-6 md:px-8 py-5 flex flex-wrap items-center justify-end gap-3">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm"
+              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm print:hidden"
             >
               Contact
             </a>
             <a
               href={profile.resumePdf}
-              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm"
+              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm print:hidden"
             >
               <Download className="w-3.5 h-3.5" />
               Resume
             </a>
+            <button
+              onClick={() => window.print()}
+              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm print:hidden"
+            >
+              <FileDown className="w-3.5 h-3.5" />
+              Download Model Card
+            </button>
           </div>
 
         </motion.div>
