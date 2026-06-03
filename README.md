@@ -170,9 +170,3 @@ public/
 
 ---
 
-## TODOs before first deploy
-
-- [ ] Add GitHub + LinkedIn handles in `content/profile.ts`
-- [ ] Drop `resume.pdf` into `public/`
-- [ ] Fix `"+ years"` typo in your PDF resume before uploading
-- [ ] Update `metadataBase` in `app/layout.tsx` once you have a domain
