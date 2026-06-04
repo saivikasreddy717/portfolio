@@ -1,4 +1,5 @@
 import Nav from "@/components/ui/Nav";
+import CursorSpotlight from "@/components/ui/CursorSpotlight";
 import Hero from "@/components/sections/Hero";
 import MetricsWall from "@/components/sections/MetricsWall";
 import WhyHireMe from "@/components/sections/WhyHireMe";
@@ -21,6 +22,7 @@ export default function Home() {
         <div className="absolute top-[120%] left-[20%] h-[400px] w-[400px] rounded-full bg-[hsl(var(--accent-3))]/10 blur-3xl" />
       </div>
 
+      <CursorSpotlight />
       <Nav />
       <Hero />
       <MetricsWall />
