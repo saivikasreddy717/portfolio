@@ -2,9 +2,8 @@
 import { useChat } from "ai/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
-import { Sparkles, X, Send, Loader2 } from "lucide-react";
+import { Sparkles, X, Send, Loader2, ArrowRight } from "lucide-react";
 
-// Seed questions — job-aware, tuned to what recruiters actually ask
 const SUGGESTIONS = [
   "What's his RAG experience?",
   "Has he used LangGraph in production?",
@@ -15,18 +14,74 @@ const SUGGESTIONS = [
 
 export default function Chatbot() {
   const [open, setOpen] = useState(false);
+  const [showNudge, setShowNudge] = useState(false);
+  const [nudgeDismissed, setNudgeDismissed] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { messages, input, handleInputChange, handleSubmit, isLoading, append } = useChat({
     api: "/api/chat",
   });
 
+  // Show nudge after 10s if chat hasn't been opened yet
+  useEffect(() => {
+    if (nudgeDismissed) return;
+    const show = setTimeout(() => setShowNudge(true), 10000);
+    return () => clearTimeout(show);
+  }, [nudgeDismissed]);
+
+  // Auto-dismiss nudge after 5s
+  useEffect(() => {
+    if (!showNudge) return;
+    const hide = setTimeout(() => setShowNudge(false), 5000);
+    return () => clearTimeout(hide);
+  }, [showNudge]);
+
+  // Dismiss nudge permanently when chat opens
+  useEffect(() => {
+    if (open) {
+      setShowNudge(false);
+      setNudgeDismissed(true);
+    }
+  }, [open]);
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, isLoading]);
 
+  function openFromNudge() {
+    setOpen(true);
+    setShowNudge(false);
+    setNudgeDismissed(true);
+  }
+
   return (
     <>
-      {/* Floating trigger — pulses subtly to invite clicks */}
+      {/* Proactive nudge bubble */}
+      <AnimatePresence>
+        {showNudge && !open && (
+          <motion.button
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.95 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            onClick={openFromNudge}
+            className="fixed bottom-24 right-6 z-50 glass rounded-2xl px-4 py-3 w-[220px]
+                       text-left shadow-2xl hover:bg-white/10 transition border border-white/10"
+          >
+            <div className="text-[10px] font-mono uppercase tracking-widest text-[hsl(var(--accent-2))] mb-1.5">
+              Portfolio Assistant
+            </div>
+            <p className="text-sm text-white/80 leading-snug">
+              Ask me about his work at Cardinal Health
+            </p>
+            <div className="flex items-center gap-1 mt-2.5 text-xs text-white/40">
+              <span>Click to chat</span>
+              <ArrowRight className="w-3 h-3" />
+            </div>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Floating trigger */}
       <motion.button
         onClick={() => setOpen(true)}
         initial={{ scale: 0, opacity: 0 }}
@@ -79,22 +134,37 @@ export default function Chatbot() {
               {messages.length === 0 && (
                 <>
                   <div className="text-sm text-white/70 leading-relaxed">
-                    Hi — I&apos;m trained on Sai Vikas&apos;s resume and production work. Ask me
-                    anything.
+                    Hi, I&apos;m trained on Sai Vikas&apos;s resume and production work. What would
+                    you like to know?
                   </div>
-                  <div className="flex flex-col gap-1.5 pt-2">
-                    {SUGGESTIONS.map((s) => (
-                      <button
-                        key={s}
-                        onClick={() => append({ role: "user", content: s })}
-                        className="text-xs text-left glass rounded-lg px-3 py-2 hover:bg-white/10 transition"
-                      >
-                        {s}
-                      </button>
-                    ))}
+
+                  <div className="pt-1">
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-white/30 mb-2.5">
+                      Try asking
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      {SUGGESTIONS.map((s) => (
+                        <button
+                          key={s}
+                          onClick={() => append({ role: "user", content: s })}
+                          className="group flex items-center justify-between gap-3 text-sm text-left
+                                     glass rounded-xl px-4 py-3 hover:bg-white/10 transition
+                                     border border-white/5 hover:border-white/15"
+                        >
+                          <span className="text-white/70 group-hover:text-white/90 transition">
+                            {s}
+                          </span>
+                          <ArrowRight
+                            className="w-3.5 h-3.5 text-white/30 group-hover:text-white/60
+                                       group-hover:translate-x-0.5 transition flex-shrink-0"
+                          />
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </>
               )}
+
               {messages.map((m) => (
                 <div
                   key={m.id}
@@ -109,6 +179,7 @@ export default function Chatbot() {
                   </div>
                 </div>
               ))}
+
               {isLoading && messages[messages.length - 1]?.role === "user" && (
                 <div className="flex items-center gap-2 text-white/50 text-xs pl-2">
                   <Loader2 className="w-3 h-3 animate-spin" />
