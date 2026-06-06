@@ -348,28 +348,18 @@ export const profile = {
   // Personal projects — shown on the site as a "Currently building" roadmap.
   roadmap: [
     {
-      title: "voyager",
-      status: "in-progress" as const,
-      description:
-        "Full-stack AI travel planner where a LangGraph agent builds multi-day itineraries from a natural-language request by calling flight, hotel, places, and weather APIs, refined through chat and rendered as an interactive map and itinerary in a React/Next.js dashboard. Containerized with Docker.",
-      github: "https://github.com/saivikasreddy717/voyager",
-      tags: ["React", "Next.js", "FastAPI", "LangGraph", "Tool Calling", "Docker"],
-    },
-    {
-      title: "agentic-rag-lab",
-      status: "in-progress" as const,
-      description:
-        "Open-source LangGraph multi-agent research assistant with MCP tools, hybrid retrieval, and a visible trace viewer.",
-      github: "https://github.com/saivikasreddy717/agentic-rag-lab",
-      tags: ["LangGraph", "MCP", "RAG", "Python"],
-    },
-    {
       title: "rag-eval-harness",
-      status: "in-progress" as const,
       description:
         "Benchmark suite comparing naïve / hybrid / HyDE / rerank RAG strategies with RAGAS scorecards + cost/latency.",
       github: "https://github.com/saivikasreddy717/rag-eval-harness",
       tags: ["RAGAS", "RAG", "Python", "Benchmarking"],
+    },
+    {
+      title: "voyager",
+      description:
+        "Full-stack AI travel planner where a LangGraph agent builds multi-day itineraries from a natural-language request by calling flight, hotel, places, and weather APIs, refined through chat and rendered as an interactive map and itinerary in a React/Next.js dashboard. Containerized with Docker.",
+      github: "https://github.com/saivikasreddy717/voyager",
+      tags: ["React", "Next.js", "FastAPI", "LangGraph", "Tool Calling", "Docker"],
     },
   ],
 } as const;

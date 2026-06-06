@@ -1,6 +1,5 @@
 "use client";
 import { motion } from "framer-motion";
-import { Github } from "lucide-react";
 import { profile } from "@/content/profile";
 
 export default function Roadmap() {
@@ -16,10 +15,7 @@ export default function Roadmap() {
           </h2>
           <p className="mt-3 text-sm text-white/50 max-w-2xl">
             Personal projects I work on outside of my day job. Follow along on{" "}
-            <a
-              href={profile.github}
-              className="text-white/80 underline underline-offset-4 hover:text-white"
-            >
+            <a href={profile.github} className="text-white/80 underline underline-offset-4 hover:text-white">
               GitHub
             </a>
             .
@@ -40,24 +36,14 @@ export default function Roadmap() {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between gap-3 flex-wrap mb-1.5">
                   <code className="font-mono text-sm font-medium">{p.title}</code>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`text-[10px] chip ${
-                        p.status === "in-progress" ? "text-green-400/80" : "text-white/40"
-                      }`}
-                    >
-                      {p.status === "in-progress" ? "in progress" : "planned"}
-                    </span>
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/40 hover:text-white transition"
-                      aria-label={`${p.title} on GitHub`}
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
-                  </div>
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] chip text-white/50 hover:text-white/80 transition"
+                  >
+                    GitHub ↗
+                  </a>
                 </div>
                 <p className="text-sm text-white/60 leading-relaxed">{p.description}</p>
                 <div className="flex flex-wrap gap-1.5 mt-2.5">
