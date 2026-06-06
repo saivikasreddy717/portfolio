@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { Github } from "lucide-react";
 import { profile } from "@/content/profile";
 
 export default function Roadmap() {
@@ -37,8 +38,35 @@ export default function Roadmap() {
             >
               <span className="text-[hsl(var(--accent))] mt-1 flex-shrink-0 text-sm">▸</span>
               <div className="flex-1 min-w-0">
-                <code className="font-mono text-sm font-medium">{p.title}</code>
-                <p className="text-sm text-white/60 mt-1.5 leading-relaxed">{p.description}</p>
+                <div className="flex items-center justify-between gap-3 flex-wrap mb-1.5">
+                  <code className="font-mono text-sm font-medium">{p.title}</code>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`text-[10px] chip ${
+                        p.status === "in-progress" ? "text-green-400/80" : "text-white/40"
+                      }`}
+                    >
+                      {p.status === "in-progress" ? "in progress" : "planned"}
+                    </span>
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white/40 hover:text-white transition"
+                      aria-label={`${p.title} on GitHub`}
+                    >
+                      <Github className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+                <p className="text-sm text-white/60 leading-relaxed">{p.description}</p>
+                <div className="flex flex-wrap gap-1.5 mt-2.5">
+                  {p.tags.map((tag) => (
+                    <span key={tag} className="text-[10px] chip text-white/50">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}

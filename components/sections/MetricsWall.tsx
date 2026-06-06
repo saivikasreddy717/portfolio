@@ -1,5 +1,5 @@
 "use client";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useMotionValue, animate } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import { profile } from "@/content/profile";
 
@@ -25,33 +25,10 @@ function parseValue(value: string): ParsedMetric {
   return { prefix: "", target: num, suffix, isRange: false, original: value };
 }
 
-function useCountUp(target: number, inView: boolean, duration = 1400) {
-  const [count, setCount] = useState(0);
-  const [done, setDone] = useState(false);
-  const rafRef = useRef<ReturnType<typeof requestAnimationFrame>>(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    let start: number | null = null;
-
-    function step(ts: number) {
-      if (!start) start = ts;
-      const progress = Math.min((ts - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * target));
-      if (progress < 1) {
-        rafRef.current = requestAnimationFrame(step);
-      } else {
-        setCount(target);
-        setDone(true);
-      }
-    }
-
-    rafRef.current = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, [inView, target, duration]);
-
-  return { count, done };
+function formatDisplay(n: number, parsed: ParsedMetric, done: boolean): string {
+  if (parsed.isRange && done) return parsed.original;
+  if (parsed.isRange) return `${n}%`;
+  return `${parsed.prefix}${n}${parsed.suffix}`;
 }
 
 function MetricCard({
@@ -62,16 +39,26 @@ function MetricCard({
   index: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
   const parsed = parseValue(metric.value);
-  const { count, done } = useCountUp(parsed.target, inView);
+  const count = useMotionValue(0);
+  const [display, setDisplay] = useState(formatDisplay(0, parsed, false));
 
-  const display =
-    parsed.isRange && done
-      ? parsed.original
-      : parsed.isRange
-      ? `${count}%`
-      : `${parsed.prefix}${count}${parsed.suffix}`;
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(count, parsed.target, {
+      duration: 1.5,
+      ease: [0.16, 1, 0.3, 1],
+    });
+    const unsubscribe = count.onChange((v) => {
+      const rounded = Math.round(v);
+      setDisplay(formatDisplay(rounded, parsed, rounded >= parsed.target));
+    });
+    return () => {
+      controls.stop();
+      unsubscribe();
+    };
+  }, [inView]);
 
   return (
     <motion.div

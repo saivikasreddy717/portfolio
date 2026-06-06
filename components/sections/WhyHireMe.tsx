@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import { Brain, Cpu, BarChart2, LineChart } from "lucide-react";
+import { Brain, Cpu, BarChart2, Users } from "lucide-react";
 import { profile } from "@/content/profile";
 
-const ICONS = [Brain, Cpu, BarChart2, LineChart];
+const ICONS = [Brain, Cpu, BarChart2, Users];
 
 export default function WhyHireMe() {
   return (

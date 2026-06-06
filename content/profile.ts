@@ -7,12 +7,13 @@ export const profile = {
   shortName: "Sai Vikas",
   role: "AI / ML Engineer",
   location: "Raleigh, NC",
-  email: "saivikas.y@zohomail.com",
+  email: "saivikasreddy717@gmail.com",
   phone: "+1 919-672-0116",
   github: "https://github.com/saivikasreddy717",
   linkedin: "https://www.linkedin.com/in/saivikasy/",
   resumePdf: "/resume.pdf",
-  availability: "Open to AI/ML Engineer roles · Available immediately",
+  availability:
+    "Open to: AI Engineer · ML Engineer · LLM Engineer · Generative AI Engineer · Applied AI Engineer · Forward Deployed Engineer",
 
   tagline: "I build production GenAI systems.",
   oneLiner:
@@ -39,23 +40,19 @@ export const profile = {
   pillars: [
     {
       title: "Agentic & RAG systems",
-      body:
-        "LangGraph + MCP agents, hybrid BM25 + dense retrieval with ColBERT rerank, RAGAS-evaluated in production at Cardinal Health.",
+      body: "LangGraph + MCP agents, hybrid BM25 + dense retrieval with ColBERT rerank, RAGAS-evaluated in production at Cardinal Health.",
     },
     {
       title: "Fine-tuning & LLM serving",
-      body:
-        "LoRA/QLoRA on 7B SLMs hitting 98% field accuracy; vLLM + Triton with dynamic batching and FlashAttention at 8x throughput.",
+      body: "LoRA/QLoRA on 7B SLMs hitting 98% field accuracy; vLLM + Triton with dynamic batching and FlashAttention at 8x throughput.",
     },
     {
       title: "Classical ML & Data Science",
-      body:
-        "GraphSAGE fraud detection, two-tower recommenders, LightGBM forecasting, SHAP explanations. Production DS across banking and healthcare.",
+      body: "GraphSAGE fraud detection, two-tower recommenders, LightGBM forecasting, SHAP explanations. Production DS across banking and healthcare.",
     },
     {
-      title: "Measurable impact",
-      body:
-        "RAGAS, Langfuse, Promptfoo, A/B tests, causal inference. I ship rigorously evaluated systems, not demos.",
+      title: "Client-Facing Delivery & Integration",
+      body: "Consulting background at TCS delivering directly into client environments. Scope ambiguous problems, integrate AI into existing systems via APIs and MCP tools, prototype fast, and drive adoption. Comfortable with regulated environments (healthcare, banking) and non-technical stakeholders.",
     },
   ],
 
@@ -136,9 +133,30 @@ export const profile = {
       "FAISS",
       "Pinecone",
     ],
+    "Full-Stack & Integration": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "FastAPI",
+      "REST & API Design",
+      "gRPC",
+      "Git",
+      "Webhooks",
+      "Docker",
+      "Kubernetes",
+    ],
+    "Delivery & Collaboration": [
+      "Customer & Stakeholder Scoping",
+      "Solution Design",
+      "Rapid Prototyping",
+      "Production Delivery",
+      "Cross-functional Communication",
+      "Regulated Environments (Healthcare, Banking)",
+    ],
   },
 
-  // Three positions — Cardinal Health + 2× TCS — each as a mini case study
+  // Three positions — Cardinal Health + 2x TCS — each as a mini case study
   experience: [
     {
       company: "Cardinal Health",
@@ -149,23 +167,30 @@ export const profile = {
         "LangGraph",
         "MCP",
         "RAG",
-        "LoRA",
+        "LoRA/QLoRA",
         "vLLM",
         "Triton",
+        "React",
+        "Next.js",
+        "FastAPI",
         "AWS EKS",
         "MLflow",
+        "LightGBM",
       ],
       problem:
         "Analysts spent hours daily manually triaging regulatory recalls, shortage alerts, and clinical document extraction, with no scalable evaluation harness for the LLM systems replacing them.",
       solution:
         "Built an agentic LangGraph workflow with MCP tools, stateful routing, and human-in-the-loop guardrails for auto-triage. Paired it with a hybrid-retrieval RAG assistant (BM25 + dense + ColBERT rerank) evaluated with RAGAS, and LoRA-fine-tuned 7B SLMs for structured extraction.",
       bullets: [
-        "Agentic compliance workflow on LangGraph with MCP tool integration: auto-triages recall/shortage events for same-day analyst response.",
-        "Hybrid BM25 + dense retrieval with ColBERT reranking and RAGAS eval harness: **3× retrieval precision, 40% less analyst research time**.",
-        "LoRA/QLoRA fine-tuning of 7B SLMs for clinical/regulatory extraction: **98% exact-match** with schema-validated JSON.",
-        "MLOps on AWS EKS (MLflow + Evidently + CodePipeline): deploy time weeks to days, drift caught pre-prod.",
-        "vLLM + Triton serving with dynamic batching + FlashAttention: **8× throughput, p95 <150ms**.",
-        "Pharma demand forecasting on 2,000+ SKUs with LightGBM + temporal CV + uncertainty: **20% fewer stockouts**.",
+        "Designed and shipped a production agentic compliance workflow on LangGraph with MCP tool integration, stateful routing, and human-in-the-loop guardrails, auto-triaging ~300 alerts/day, auto-resolving 60% without analyst review, and cutting triage time to same-day.",
+        "Built a compliance-grade RAG research assistant (hybrid BM25 + dense retrieval, knowledge-graph lookup, ColBERT reranking) governed by a RAGAS evaluation harness, raising retrieval precision **3x** and cutting analyst research time **40%**.",
+        "Fine-tuned 7B-parameter SLMs with LoRA/QLoRA for structured extraction from clinical and regulatory documents, reaching **98% exact-match** with schema-validated JSON and human-in-the-loop review across ~10K documents/month.",
+        "Optimized LLM inference with vLLM and NVIDIA Triton using dynamic batching and FlashAttention, raising throughput **8x**, holding p95 latency under **150ms**, and cutting GPU serving cost ~60%.",
+        "Built React and Next.js front-ends on FastAPI back-ends so analysts could use deployed AI tools directly, turning back-end models into self-serve products and driving adoption through rapid, feedback-driven iteration.",
+        "Owned LLMOps tooling on AWS EKS: MLflow, Docker, CodePipeline CI/CD, Evidently quality monitoring; cut deployment time from weeks to days across 5+ LLM services.",
+        "Built a pharmaceutical demand forecasting model (LightGBM, temporal cross-validation, conformal prediction intervals) across 2,000+ SKUs; improved WAPE ~15% and reduced stockouts **20%**.",
+        "Segmented SKU portfolio by demand volatility and lifecycle stage for tiered forecasting policies, lifting accuracy on long-tail items ~10%.",
+        "Translated forecast outputs into safety-stock and reorder-point recommendations, partnering with planning teams to improve on-time product availability ~5% and reducing excess inventory ~10%.",
       ],
       impact: [
         { metric: "retrieval precision", value: "3×" },
@@ -195,6 +220,8 @@ export const profile = {
         "Self-service banking assistant on AKS with hybrid BM25+FAISS + fine-tuned transformer, 200K+ interactions: **~55% containment, 40% cost reduction, 12% CSAT lift**.",
         "Fraud detection with GraphSAGE + XGBoost + TCN: **+4.5% precision @ 95% recall, 20% lower scoring latency** on Azure Event Hubs.",
         "A/B tests with power analysis and matched-cohort post-launch lift attribution: statistically defensible go/no-go decisions.",
+        "Built an NLP document-intelligence pipeline for onboarding and KYC (fine-tuned BERT + FAISS similarity matching), cutting manual handling time ~35% across ~2,000 documents/day and reducing data-entry errors 40%.",
+        "Rapidly prototyped and delivered a collections-prioritization tool for the client in under ~4 weeks, proving value fast and expanding the engagement into additional risk and analytics use cases.",
       ],
       impact: [
         { metric: "containment", value: "55%" },
@@ -281,6 +308,10 @@ export const profile = {
         title: "MLOps & Cloud",
         detail: "AWS EKS · MLflow · Evidently · CI/CD · drift detection",
       },
+      {
+        title: "Client-Facing Delivery & Integration",
+        detail: "Consulting background · API and MCP integration · Rapid prototyping · Regulated environments",
+      },
     ],
     evaluationResults: [
       { metric: "Retrieval precision", result: "3x improvement" },
@@ -298,6 +329,7 @@ export const profile = {
       "Data Science and ML Engineer roles at mature companies",
       "Healthcare, banking, or regulated industry verticals",
       "Hybrid or remote roles based in the USA",
+      "Forward Deployed Engineer roles: client-facing AI deployment in enterprise and regulated environments",
     ],
     knownConstraints: [
       "Depth over breadth: production systems, not resume padding",
@@ -305,7 +337,7 @@ export const profile = {
       "US-based roles only, hybrid or remote",
     ],
     technicalSpecs: [
-      { label: "Languages", value: "Python · TypeScript" },
+      { label: "Languages", value: "Python · TypeScript · JavaScript" },
       { label: "Frameworks", value: "PyTorch · LangChain · LangGraph · HuggingFace" },
       { label: "Infrastructure", value: "AWS · Azure · Kubernetes · Docker" },
       { label: "Observability", value: "MLflow · Langfuse · Evidently · Promptfoo" },
@@ -313,26 +345,39 @@ export const profile = {
     ],
   },
 
-  // Projects you're building — shown on the site as a "Currently building" roadmap.
-  // Add real projects to content/projects/*.md and this list as they ship.
+  // Personal projects — shown on the site as a "Currently building" roadmap.
   roadmap: [
+    {
+      title: "voyager",
+      status: "in-progress" as const,
+      description:
+        "Full-stack AI travel planner where a LangGraph agent builds multi-day itineraries from a natural-language request by calling flight, hotel, places, and weather APIs, refined through chat and rendered as an interactive map and itinerary in a React/Next.js dashboard. Containerized with Docker.",
+      github: "https://github.com/saivikasreddy717/voyager",
+      tags: ["React", "Next.js", "FastAPI", "LangGraph", "Tool Calling", "Docker"],
+    },
     {
       title: "agentic-rag-lab",
       status: "in-progress" as const,
       description:
         "Open-source LangGraph multi-agent research assistant with MCP tools, hybrid retrieval, and a visible trace viewer.",
+      github: "https://github.com/saivikasreddy717/agentic-rag-lab",
+      tags: ["LangGraph", "MCP", "RAG", "Python"],
     },
     {
       title: "rag-eval-harness",
       status: "in-progress" as const,
       description:
         "Benchmark suite comparing naïve / hybrid / HyDE / rerank RAG strategies with RAGAS scorecards + cost/latency.",
+      github: "https://github.com/saivikasreddy717/rag-eval-harness",
+      tags: ["RAGAS", "RAG", "Python", "Benchmarking"],
     },
     {
       title: "lora-extractor",
       status: "planned" as const,
       description:
         "Upload a PDF, fine-tune a 7B SLM with LoRA, serve via vLLM. HF Space + full notebook.",
+      github: "https://github.com/saivikasreddy717/lora-extractor",
+      tags: ["LoRA", "vLLM", "HuggingFace", "Python"],
     },
   ],
 } as const;
