@@ -371,13 +371,5 @@ export const profile = {
       github: "https://github.com/saivikasreddy717/rag-eval-harness",
       tags: ["RAGAS", "RAG", "Python", "Benchmarking"],
     },
-    {
-      title: "lora-extractor",
-      status: "planned" as const,
-      description:
-        "Upload a PDF, fine-tune a 7B SLM with LoRA, serve via vLLM. HF Space + full notebook.",
-      github: "https://github.com/saivikasreddy717/lora-extractor",
-      tags: ["LoRA", "vLLM", "HuggingFace", "Python"],
-    },
   ],
 } as const;
