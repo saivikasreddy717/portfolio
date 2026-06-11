@@ -24,6 +24,7 @@ export default function BootSequence() {
   const reduced = useReducedMotion();
   const [show, setShow] = useState(false);
   const [step, setStep] = useState(0);
+  const done = step > BOOT_LINES.length;
 
   // Decide once on mount; sessionStorage keeps reloads quiet.
   useEffect(() => {
@@ -48,22 +49,21 @@ export default function BootSequence() {
     return () => clearTimeout(t);
   }, [show, step]);
 
-  // Lock scroll while booting; any input skips.
+  // Lock scroll only while the overlay is actually up; any input skips.
+  // The unlock must key off `done` too: `show` never flips back to false,
+  // so depending on it alone would leave the page unscrollable forever.
   useEffect(() => {
-    if (!show) return;
-    const prev = document.body.style.overflow;
+    if (!show || done) return;
     document.body.style.overflow = "hidden";
     const skip = () => setStep(BOOT_LINES.length + 1);
     window.addEventListener("keydown", skip);
     window.addEventListener("pointerdown", skip);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = "";
       window.removeEventListener("keydown", skip);
       window.removeEventListener("pointerdown", skip);
     };
-  }, [show]);
-
-  const done = step > BOOT_LINES.length;
+  }, [show, done]);
 
   return (
     <AnimatePresence>
