@@ -1,5 +1,5 @@
-import { openai } from "@/lib/openai";
-import { vectorIndex } from "@/lib/vector";
+import { getOpenAI } from "@/lib/openai";
+import { getVectorIndex } from "@/lib/vector";
 
 /**
  * Retrieve the top-K most relevant resume/project chunks for a query.
@@ -7,13 +7,13 @@ import { vectorIndex } from "@/lib/vector";
  */
 export async function retrieveContext(query: string, k = 6) {
   // 1. Embed the user question
-  const { data } = await openai.embeddings.create({
+  const { data } = await getOpenAI().embeddings.create({
     model: "text-embedding-3-small",
     input: query,
   });
 
   // 2. Vector search in Upstash
-  const results = await vectorIndex.query({
+  const results = await getVectorIndex().query({
     vector: data[0].embedding,
     topK: k,
     includeMetadata: true,

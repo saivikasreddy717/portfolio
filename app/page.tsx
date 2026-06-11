@@ -1,13 +1,16 @@
 import Nav from "@/components/ui/Nav";
-import CursorSpotlight from "@/components/ui/CursorSpotlight";
+import BootSequence from "@/components/fx/BootSequence";
+import CommandPalette from "@/components/fx/CommandPalette";
+import CustomCursor from "@/components/fx/CustomCursor";
+import Konami from "@/components/fx/Konami";
+import TrainingHUD from "@/components/fx/TrainingHUD";
 import Hero from "@/components/sections/Hero";
 import MetricsWall from "@/components/sections/MetricsWall";
 import WhyHireMe from "@/components/sections/WhyHireMe";
-import ModelCard from "@/components/sections/ModelCard";
 import Experience from "@/components/sections/Experience";
 import Skills from "@/components/sections/Skills";
+import ModelCard from "@/components/sections/ModelCard";
 import Education from "@/components/sections/Education";
-import Certifications from "@/components/sections/Certifications";
 import Roadmap from "@/components/sections/Roadmap";
 import Contact from "@/components/sections/Contact";
 import Chatbot from "@/components/ui/Chatbot";
@@ -15,30 +18,37 @@ import Chatbot from "@/components/ui/Chatbot";
 export default function Home() {
   return (
     <main id="top" className="relative overflow-hidden">
-      {/* Ambient gradient orbs, fixed, non-interactive */}
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-[hsl(var(--accent))]/15 blur-3xl" />
-        <div className="absolute top-[60%] -right-40 h-[500px] w-[500px] rounded-full bg-[hsl(var(--accent-2))]/10 blur-3xl" />
-        <div className="absolute top-[120%] left-[20%] h-[400px] w-[400px] rounded-full bg-[hsl(var(--accent-3))]/10 blur-3xl" />
+      {/* Backdrop: blueprint grid, drifting scan band, film grain */}
+      <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+        <div className="absolute inset-0 grid-bg" />
+        <div className="absolute inset-x-0 top-0 scanband" />
+        <div className="absolute inset-0 noise" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-[480px] w-[720px] rounded-full bg-[hsl(var(--accent))]/[0.05] blur-3xl" />
       </div>
 
-      <CursorSpotlight />
+      <BootSequence />
+      <CustomCursor />
+      <CommandPalette />
+      <Konami />
+      <TrainingHUD />
+
       <Nav />
       <Hero />
       <MetricsWall />
       <WhyHireMe />
-      <ModelCard />
       <Experience />
       <Skills />
+      <ModelCard />
       <Education />
-      <Certifications />
       <Roadmap />
       <Contact />
 
       <Chatbot />
 
-      <footer className="text-center py-8 text-xs text-white/40 border-t border-white/5">
-        Built with Next.js · Streaming RAG chatbot powered by GPT-4o-mini + Upstash Vector
+      <footer className="border-t border-white/5 px-6 py-8 text-center font-mono text-[11px] text-white/35">
+        <span className="text-[hsl(var(--good))]">✓</span> process exited with code 0 · built with
+        Next.js · RAG chatbot: GPT-4o-mini + Upstash Vector ·{" "}
+        <span className="text-white/50">no recruiters were harmed during this training run</span>
       </footer>
     </main>
   );

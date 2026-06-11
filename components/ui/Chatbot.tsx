@@ -3,6 +3,7 @@ import { useChat } from "ai/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { Sparkles, X, Send, Loader2, ArrowRight } from "lucide-react";
+import { EV } from "@/lib/bus";
 
 const SUGGESTIONS = [
   "What's his RAG experience?",
@@ -20,6 +21,13 @@ export default function Chatbot() {
   const { messages, input, handleInputChange, handleSubmit, isLoading, append } = useChat({
     api: "/api/chat",
   });
+
+  // Hero CTA and command palette can open the chat from anywhere.
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener(EV.chatbot, onOpen);
+    return () => window.removeEventListener(EV.chatbot, onOpen);
+  }, []);
 
   // Show nudge after 10s if chat hasn't been opened yet
   useEffect(() => {
@@ -94,7 +102,7 @@ export default function Chatbot() {
         aria-label="Open AI assistant"
       >
         <Sparkles className="w-4 h-4 text-[hsl(var(--accent))]" />
-        <span className="text-sm font-medium">Ask my AI</span>
+        <span className="text-sm font-mono">run inference</span>
         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
       </motion.button>
 
