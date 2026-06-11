@@ -198,14 +198,14 @@ export default function CommandPalette() {
     };
   }, [open, close]);
 
-  // Focus + scroll lock while open.
+  // Focus + scroll lock while open. Restore to "" (not the captured prior
+  // value) so a lock inherited from another overlay can never stick.
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const t = setTimeout(() => inputRef.current?.focus(), 30);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = "";
       clearTimeout(t);
     };
   }, [open]);
