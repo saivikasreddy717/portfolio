@@ -1,63 +1,77 @@
 "use client";
 import { motion } from "framer-motion";
+import { ExternalLink, GitBranch } from "lucide-react";
 import { profile } from "@/content/profile";
+import Epoch from "@/components/fx/Epoch";
 
+/**
+ * Currently training: personal projects as live training runs that have not
+ * converged yet, indeterminate progress bars included.
+ */
 export default function Roadmap() {
   return (
-    <section id="building" className="px-6 md:px-12 py-20">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-10">
-          <div className="text-xs font-mono uppercase tracking-widest text-white/40 mb-2">
-            Personal projects
-          </div>
-          <h2 className="text-3xl md:text-4xl font-semibold max-w-3xl">
-            Projects I&apos;m <span className="gradient-text">building</span>.
-          </h2>
-          <p className="mt-3 text-sm text-white/50 max-w-2xl">
-            Personal projects I work on outside of my day job. Follow along on{" "}
-            <a href={profile.github} className="text-white/80 underline underline-offset-4 hover:text-white">
-              GitHub
-            </a>
-            .
-          </p>
-        </div>
+    <Epoch
+      n={7}
+      name="active runs"
+      id="building"
+      title={
+        <>
+          Runs still <span className="gradient-text">in progress</span>.
+        </>
+      }
+      sub="Side projects currently training on nights and weekends. Loss is decreasing; PRs welcome."
+    >
+      <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+        {profile.roadmap.map((proj, i) => (
+          <motion.a
+            key={proj.title}
+            href={proj.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: i * 0.08, duration: 0.55 }}
+            className="group panel panel-hover rounded-md p-6 block"
+          >
+            <div className="flex items-center justify-between hud-label">
+              <span className="flex items-center gap-2">
+                <GitBranch className="w-3.5 h-3.5 text-[hsl(var(--accent))]" />
+                run/{proj.title}
+              </span>
+              <span className="flex items-center gap-1.5 text-[hsl(var(--accent-2))]">
+                <span className="h-1.5 w-1.5 rounded-full bg-[hsl(var(--accent-2))] animate-pulse" />
+                training
+              </span>
+            </div>
 
-        <div className="space-y-3">
-          {profile.roadmap.map((p, i) => (
-            <motion.div
-              key={p.title}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="glass glass-hover rounded-xl p-5 flex items-start gap-4"
-            >
-              <span className="text-[hsl(var(--accent))] mt-1 flex-shrink-0 text-sm">▸</span>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-3 flex-wrap mb-1.5">
-                  <code className="font-mono text-sm font-medium">{p.title}</code>
-                  <a
-                    href={p.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[10px] chip text-white/50 hover:text-white/80 transition"
-                  >
-                    GitHub ↗
-                  </a>
-                </div>
-                <p className="text-sm text-white/60 leading-relaxed">{p.description}</p>
-                <div className="flex flex-wrap gap-1.5 mt-2.5">
-                  {p.tags.map((tag) => (
-                    <span key={tag} className="text-[10px] chip text-white/50">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            <h3 className="mt-4 text-lg font-semibold font-mono group-hover:text-[hsl(var(--accent))] transition-colors">
+              {proj.title}
+              <ExternalLink className="inline w-3.5 h-3.5 ml-2 opacity-0 group-hover:opacity-60 transition-opacity" />
+            </h3>
+            <p className="mt-2 text-sm text-[hsl(var(--muted))] leading-relaxed">
+              {proj.description}
+            </p>
+
+            {/* indeterminate progress */}
+            <div className="mt-5 h-1 bg-white/10 rounded-full overflow-hidden">
+              <div className="training-bar h-full w-full" />
+            </div>
+            <div className="mt-2 flex justify-between font-mono text-[10px] text-white/35">
+              <span>eta: shipping soon</span>
+              <span>github.com ↗</span>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {proj.tags.map((t) => (
+                <span key={t} className="chip text-[10px] text-white/60">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </motion.a>
+        ))}
       </div>
-    </section>
+    </Epoch>
   );
 }

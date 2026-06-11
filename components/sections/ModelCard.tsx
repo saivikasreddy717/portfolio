@@ -2,33 +2,29 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, AlertCircle, Download, FileDown } from "lucide-react";
 import { profile } from "@/content/profile";
+import Epoch from "@/components/fx/Epoch";
 
 export default function ModelCard() {
   const card = profile.modelCard;
 
   return (
-    <section id="model-card" className="px-6 md:px-12 py-20">
-      <div className="max-w-6xl mx-auto">
-
-        {/* Section label */}
-        <div className="mb-10">
-          <div className="text-xs font-mono uppercase tracking-widest text-white/40 mb-2">
-            Model card
-          </div>
-          <h2 className="text-3xl md:text-4xl font-semibold">
-            The <span className="gradient-text">technical spec</span> sheet.
-          </h2>
-          <p className="mt-3 text-sm text-white/50 max-w-2xl">
-            Inspired by Hugging Face model cards: training data, capabilities, evaluation results, and known constraints.
-          </p>
-        </div>
-
+    <Epoch
+      n={5}
+      name="weights & evals"
+      id="model-card"
+      title={
+        <>
+          The <span className="gradient-text">model card</span>, Hugging Face style.
+        </>
+      }
+      sub="Training data, capabilities, evaluation results, and known constraints. A printable spec sheet of the engineer."
+    >
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="glass rounded-2xl overflow-hidden"
+          className="panel rounded-lg overflow-hidden"
         >
           {/* Card header */}
           <div className="border-b border-white/5 px-6 md:px-8 py-5 flex flex-wrap items-center justify-between gap-3">
@@ -159,20 +155,20 @@ export default function ModelCard() {
           <div className="border-t border-white/5 px-6 md:px-8 py-5 flex flex-wrap items-center justify-end gap-3">
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm print:hidden"
+              className="inline-flex items-center gap-2 panel panel-hover rounded-md px-4 py-2 text-sm print:hidden"
             >
               Contact
             </a>
             <a
               href={profile.resumePdf}
-              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm print:hidden"
+              className="inline-flex items-center gap-2 panel panel-hover rounded-md px-4 py-2 text-sm print:hidden"
             >
               <Download className="w-3.5 h-3.5" />
               Resume
             </a>
             <button
               onClick={() => window.open('/model-card', '_blank')}
-              className="inline-flex items-center gap-2 glass glass-hover rounded-lg px-4 py-2 text-sm print:hidden"
+              className="inline-flex items-center gap-2 panel panel-hover rounded-md px-4 py-2 text-sm print:hidden"
             >
               <FileDown className="w-3.5 h-3.5" />
               Download Model Card
@@ -180,8 +176,7 @@ export default function ModelCard() {
           </div>
 
         </motion.div>
-      </div>
-    </section>
+    </Epoch>
   );
 }
 

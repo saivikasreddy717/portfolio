@@ -4,28 +4,55 @@
 
 @layer base {
   :root {
-    --bg: 240 10% 4%;
-    --surface: 240 8% 8%;
-    --border: 240 6% 20%;
-    --text: 0 0% 98%;
-    --muted: 240 5% 65%;
-    --accent: 265 89% 70%;
-    --accent-2: 180 100% 55%;
-    --accent-3: 330 95% 65%;
+    /* NEURAL-OS design tokens: void black, electric cyan, signal amber, plasma violet */
+    --bg: 228 32% 3%;
+    --surface: 228 24% 6%;
+    --border: 222 18% 16%;
+    --text: 200 25% 96%;
+    --muted: 220 12% 62%;
+    --accent: 183 100% 52%; /* electric cyan, the system signal color */
+    --accent-2: 40 100% 58%; /* signal amber, human highlights */
+    --accent-3: 268 92% 70%; /* plasma violet, reasoning */
+    --good: 152 72% 48%;
+    --bad: 0 84% 62%;
+  }
+  /* Konami easter egg: the model overfits and the palette destabilizes */
+  html.overfit {
+    --accent: 320 100% 62%;
+    --accent-2: 60 100% 55%;
+    --accent-3: 180 100% 55%;
   }
   html {
     scroll-behavior: smooth;
   }
-  /* Sticky nav is ~64px; offset anchor jumps so section titles clear it. */
+  /* Sticky nav is ~56px; offset anchor jumps so section titles clear it. */
   section[id] {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 72px;
   }
   body {
     @apply bg-[hsl(var(--bg))] text-[hsl(var(--text))] antialiased;
     font-feature-settings: "ss01", "cv11";
   }
   ::selection {
-    background: hsl(var(--accent) / 0.3);
+    background: hsl(var(--accent) / 0.35);
+    color: hsl(var(--text));
+  }
+  @media (pointer: fine) {
+    html.cursor-fx *:not(input):not(textarea):not(select) {
+      cursor: none !important;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
@@ -37,10 +64,21 @@
   .glass-hover {
     @apply hover:bg-white/[0.06] hover:border-white/20 transition-all duration-300;
   }
+  .panel {
+    @apply relative bg-[hsl(var(--surface))/0.55] border border-white/10 backdrop-blur-sm;
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.04),
+      0 0 0 1px rgba(0, 0, 0, 0.2);
+  }
+  .panel-hover {
+    @apply transition-all duration-300 hover:border-[hsl(var(--accent))/0.35] hover:bg-[hsl(var(--surface))/0.8];
+  }
+  .panel-hover:hover {
+    box-shadow:
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.05),
+      0 0 32px hsl(var(--accent) / 0.07);
+  }
   .gradient-text {
-    /* Explicit linear-gradient bypasses Tailwind's from/via/to system, which
-       generates a transparent fallback stop that was making the leading chars
-       vanish against the dark background. */
     background-image: linear-gradient(
       90deg,
       hsl(var(--accent)) 0%,
@@ -53,15 +91,145 @@
     color: transparent;
     animation: gradient 8s ease infinite;
   }
-  @keyframes gradient {
-    0%, 100% { background-position: 0% 50%; }
-    50%      { background-position: 100% 50%; }
-  }
   .chip {
-    @apply inline-flex items-center glass rounded-full px-3 py-1 text-xs font-mono;
+    @apply inline-flex items-center border border-white/10 bg-white/[0.03] rounded-full px-3 py-1 text-xs font-mono;
+  }
+  .hud-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.22em] text-[hsl(var(--muted))];
+  }
+  .text-glow {
+    text-shadow: 0 0 24px hsl(var(--accent) / 0.5);
+  }
+  /* Blueprint grid laid over the void */
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--accent) / 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--accent) / 0.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 100%);
+  }
+  /* Film-grain noise, data-uri SVG turbulence */
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+  }
+  /* One soft CRT scan band drifting down the page */
+  .scanband {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      hsl(var(--accent) / 0.04) 50%,
+      transparent 100%
+    );
+    height: 220px;
+    animation: scanband 9s linear infinite;
+  }
+  .caret::after {
+    content: "▌";
+    margin-left: 2px;
+    color: hsl(var(--accent));
+    animation: blink 1.05s steps(1) infinite;
+  }
+  /* Indeterminate training progress shimmer */
+  .training-bar {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--accent) / 0.9) 45%,
+      hsl(var(--accent-2) / 0.9) 55%,
+      transparent 100%
+    );
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    animation: slide-x 1.6s ease-in-out infinite;
+  }
+  .marquee {
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track:hover .marquee {
+    animation-play-state: paused;
+  }
+  /* SVG pipeline flow */
+  .flow-dash {
+    stroke-dasharray: 6 8;
+    animation: dash 1.4s linear infinite;
+  }
+  /* Skill chips fire in sequence when their layer card is hovered */
+  .layer-card:hover .skill-chip {
+    animation: chip-fire 0.7s ease both;
+    animation-delay: calc(var(--i) * 28ms);
   }
 }
 
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes scanband {
+  0% {
+    transform: translateY(-240px);
+  }
+  100% {
+    transform: translateY(105vh);
+  }
+}
+@keyframes drip {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(320%);
+  }
+}
+@keyframes slide-x {
+  0% {
+    background-position: -60% 0;
+  }
+  100% {
+    background-position: 160% 0;
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+@keyframes chip-fire {
+  0% {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+  }
+  45% {
+    border-color: hsl(var(--accent) / 0.8);
+    color: hsl(var(--accent));
+    box-shadow: 0 0 14px hsl(var(--accent) / 0.25);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -71,9 +239,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: hsl(var(--accent) / 0.18);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: hsl(var(--accent) / 0.35);
 }
